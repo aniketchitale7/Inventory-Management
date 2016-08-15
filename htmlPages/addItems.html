@@ -1,0 +1,84 @@
+<div ng-controller="managerPageCtrl">
+    <h1 align="center" id="heading">Add Orders</h1>
+    <div class="main-div col-sm-8 col-sm-offset-2">
+        <form name="accountCreationForm" ng-submit="addOrders()" class="form-horizontal" role="form">
+
+
+
+
+            <div class="form-group">
+                <label for="newUserEmail" class="col-sm-2 control-label">ProductId *</label>
+                <div class="col-sm-6">
+                    <input type="text"  class="form-control" id="newUserEmail" placeholder="productId" ng-model="input.productIds" required/>
+                </div>
+            </div>
+
+          <!--  <div class="form-group">
+                <label for="PhoneNo" class="col-sm-2 control-label">Phone No</label>
+                <div class="col-sm-6">
+                    <input type="text"  class="form-control" id="PhoneNo" placeholder="Phone No" ng-model="login.Phone_No" required/>
+                </div>
+            </div> -->
+
+
+
+
+            <div class="form-group">
+                <label for="newUserPassword" class="col-sm-2 control-label">Product Name *</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="newUserPassword" placeholder="eg: Product name" ng-model="input.productName" required />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword" class="col-sm-2 control-label">Product Category *</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="confirmPassword" placeholder="Product Category" ng-model="input.productCategory" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="FirstName" class="col-sm-2 control-label">Product Subcategory *</label>
+                <div class="col-sm-6">
+                    <input type="text"  class="form-control" id="FirstName" placeholder="Product Subcategory" ng-model="input.productSubCategory" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Last_Name" class="col-sm-2 control-label">Product Vendor *</label>
+                <div class="col-sm-6">
+                    <input type="text"  class="form-control" id="Last_Name" placeholder="Product Vendor" ng-model="input.productVendor" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob" class="col-sm-2 control-label">Quantity *</label>
+                <div class="col-sm-6">
+                    <input type="text"  class="form-control" id="dob" placeholder="Quantity" ng-model="input.productQuantity" required/>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="DesignationID" class="col-sm-2 control-label">Product Price</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="DesignationID" placeholder="product price" ng-model="input.productPrice" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="DesignationID" class="col-sm-2 control-label">Product Description</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="DesignationID" placeholder="product Description" ng-model="input.productDescription" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" id="create_account">Add Item</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

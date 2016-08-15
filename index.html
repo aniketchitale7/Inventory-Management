@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+  <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css"><link/>
+
+  <script type="text/javascript" src="js/angular.min.js"></script>
+  <script type="text/javascript" src="js/angular-md5.min.js"></script>
+  <script type="text/javascript" src="js/angular-route.min.js"></script>
+  <script type="text/javascript" src="js/angular-uuid2.min.js"></script>
+  <script type="text/javascript" src="js/angular-cookies.min.js"></script>
+  <script type="text/javascript" src="js/angular-resource.min.js"></script>
+  <script type="text/javascript" src="js/angular.js"></script>
+
+
+
+  <script type="text/javascript" src="app/app.js"></script>
+  <script  type="text/javascript" src="app/loginCtrl.js"></script>
+  <script  type="text/javascript" src="app/userPageCtrl.js"></script>
+  <script  type="text/javascript" src="app/userPageCtrl1.js"></script>
+  <script  type="text/javascript" src="app/adminPageCtrl.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/ngCart.js"></script>
+  <script src="lib/angular/ngCart.directives.js"></script>
+  <script src="lib/angular/ngCart.fulfilment.js"></script>
+  <script src="lib/dirPagination.js"></script>
+  <script  type="text/javascript" src="app/managerPageCtrl.js"></script>
+
+
+  <meta charset="UTF-8">
+  <title>Inventory Management System</title>
+
+</head>
+<body>
+
+
+<!-- Includes login.html HERE -->
+<div ng-view ></div>
+<div class="col-sm-3">
+  {{ message}}
+</div>
+</body>
+</html>
+
+

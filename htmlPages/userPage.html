@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./css/style1.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/navi.css" media="screen" />
+</head>
+<body>
+<div id="header">
+    <div id="top">
+        <div class="middle">
+            <p>Welcome, <strong>{{user_name}}.</strong> [ <a href  ng-click="logout()">logout</a> ]</p>
+        </div>
+        <div class="right">
+            <div class="align-right">
+
+            </div>
+        </div>
+    </div>
+    <div id="nav" style="margin-top: 10px;">
+        <ul>
+            <li class="upp">DashBoard</a>
+                <ul>
+
+                    <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
+
+                </ul   >
+            </li>
+            <li class="upp"><a href="#">Manage Supplies</a>
+                <ul>
+                    <li>&#8250; <a ng-click="redirectToCart()">Order Supplies</a></li>
+                    <li>&#8250; <a ng-click="redirectToReturn()">Return Supplies</a></li>
+
+
+                </ul>
+            </li>
+
+            <li class="upp">Settings
+                <ul>
+                    <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div role="main" class="container theme-showcase">
+    <div class="" style="margin-top:90px;">
+        <div class="col-lg-8">
+            <div class="page-header">
+                <h4 id="tables"> Welcome {{name}}</h4>
+                <h3>Order Products</h3>
+            </div>
+            <div class="bs-component">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label >Search</label>
+                        <input type="text" ng-model="search" class="form-control" placeholder="Search">
+                    </div>
+                </form>
+                <table class="table table-striped table-hover" style="font-size: 14px;">
+                    <thead>
+                    <col width="900" />
+                    <tr>
+                        <th ng-click="sort('productId')">Id
+                        <!--    <span class="glyphicon sort-icon" ng-show="sortKey=='productId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
+                        </th>
+                        <th ng-click="sort('productName')">Product
+                            <!--   <span class="glyphicon sort-icon" ng-show="sortKey=='productName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>-->
+                        </th>
+                        <th ng-click="sort('productCategory')">Category
+                            <!--   <span class="glyphicon sort-icon" ng-show="sortKey=='productCategory'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>-->
+                        </th>
+                        <th ng-click="sort('productSubcategory')">Subcategory
+                            <!--   <span class="glyphicon sort-icon" ng-show="sortKey=='productSubcategory'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
+                        </th>
+                        <th ng-click="sort('productVendor')">Vendors
+                             <!--  <span class="glyphicon sort-icon" ng-show="sortKey=='productVendor'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
+                        </th>
+                        <th ng-click="sort('productQuantity')">Quantity
+                            <!--   <span class="glyphicon sort-icon" ng-show="sortKey=='productQuantity'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
+                        </th>
+                        <th ng-click="sort('productPrice')">Price
+                             <!--  <span class="glyphicon sort-icon" ng-show="sortKey=='productPrice'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span> -->
+                        </th>
+                        <th ng-click="sort('productDescription')">Description
+                             <!--  <span class="glyphicon sort-icon" ng-show="sortKey=='productDescription'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>-->
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr dir-paginate="user in users|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                        <td>{{user.productId}}</td>
+                        <td>{{user.productName}}</td>
+                        <td>{{user.productCategory}}</td>
+                        <td>{{user.productSubcategory}}</td>
+                        <td>{{user.productVendor}}</td>
+                        <td>{{user.productQuantity}}</td>
+                        <td>{{user.productPrice}}</td>
+                        <td>{{user.productDescription}}</td>
+                      <td>  <ngcart-addtocart id="{{user.productId}}" name="{{user.productName}}" price="{{user.productPrice}}" quantity="{{user.productQuantity}} " quantityMax = "{{user.productQuantity}} "> Add to Cart</ngcart-addtocart> </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <dir-pagination-controls
+                        max-size="3"
+                        direction-links="true"
+                        boundary-links="true" >
+                </dir-pagination-controls>
+            </div>
+
+            <h3>Your Cart</h3>
+
+           <ngcart-cart></ngcart-cart>
+            <h1>Confirm Total Price</h1>
+            <input type = "text" name ="input" ng-model = "input.confirmPrice" placeholder="re-enter Total" style="color:black;" />
+            <a class="btn btn-lg btn-primary"  ng-click="checkout()">Place Order</a>
+
+            <hr/>
+            <div ng-show="summary">
+                <h4>{{orderPlace}}</h4>
+                <h4>{{summary}}</h4>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="./lib/angular/angular.js"></script>
+<script src="./lib/dirPagination.js"></script>
+<script src="./app/app.js"></script>
+<script type="text/ng-template" id="template/ngCart/summary.html">
+    <div class="row">
+        <div class="col-md-2">
+            <svg version="1.1"  class="icon" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" xml:space="preserve">
+			<path d="M27.715,10.48l-2.938,6.312c-0.082,0.264-0.477,0.968-1.318,0.968H11.831
+				c-0.89,0-1.479-0.638-1.602-0.904l-2.048-6.524C7.629,8.514,8.715,7.933,9.462,7.933c0.748,0,14.915,0,16.805,0
+				C27.947,7.933,28.17,9.389,27.715,10.48L27.715,10.48z M9.736,9.619c0.01,0.061,0.026,0.137,0.056,0.226l1.742,6.208
+				c0.026,0.017,0.058,0.028,0.089,0.028h11.629l2.92-6.27c0.025-0.073,0.045-0.137,0.053-0.192H9.736L9.736,9.619z M13.544,25.534
+				c-0.819,0-1.482-0.662-1.482-1.482s0.663-1.484,1.482-1.484c0.824,0,1.486,0.664,1.486,1.484S14.369,25.534,13.544,25.534
+				L13.544,25.534z M23.375,25.534c-0.82,0-1.482-0.662-1.482-1.482s0.662-1.484,1.482-1.484c0.822,0,1.486,0.664,1.486,1.484
+				S24.197,25.534,23.375,25.534L23.375,25.534z M24.576,21.575H13.965c-2.274,0-3.179-2.151-3.219-2.244
+				c-0.012-0.024-0.021-0.053-0.028-0.076c0,0-3.56-12.118-3.834-13.05c-0.26-0.881-0.477-1.007-1.146-1.007H2.9
+				c-0.455,0-0.82-0.364-0.82-0.818s0.365-0.82,0.82-0.82h2.841c1.827,0,2.4,1.103,2.715,2.181
+				c0.264,0.898,3.569,12.146,3.821,12.999c0.087,0.188,0.611,1.197,1.688,1.197h10.611c0.451,0,0.818,0.368,0.818,0.818
+				C25.395,21.21,25.027,21.575,24.576,21.575L24.576,21.575z"/>
+</svg>
+        </div>
+        <div class="col-md-6">{{ ngCart.totalItems() }}
+            <ng-pluralize count="ngCart.totalItems()" when="{1: 'item', 'other':'items'}"></ng-pluralize>
+            <br/>{{ ngCart.totalCost() | currency }}
+        </div>
+    </div>
+</script>
+
+
+<script type="text/ng-template" id="template/ngCart/cart.html">
+
+
+    <div class="table-responsive col-lg-12">
+
+        <table class="table table-striped ngCart cart">
+
+            <thead>
+            <tr>
+                <th></th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr ng-show="ngCart.getTax()">
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Tax ({{ ngCart.getCart().tax }}%):</th>
+                <th>{{ ngCart.getTax() | currency }}</th>
+            </tr>
+            <tr ng-show="ngCart.getShipping()">
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Shipping:</th>
+                <th>{{ ngCart.getShipping() | currency }}</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Total:</th>
+                <th>{{ ngCart.totalCost() | currency }}</th>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr ng-repeat="item in ngCart.getCart().items track by $index">
+                <td><span ng-click="ngCart.removeItem($index)" class="glyphicon glyphicon-remove"></span></td>
+                <td>{{ item.getName() }}</td>
+                <td><span class="glyphicon glyphicon-minus" ng-class="{'disabled':item.getQuantity()==1}"
+                          ng-click="item.setQuantity(-1, true)"></span>&nbsp;&nbsp;
+                    {{ item.getQuantity() | number }}&nbsp;&nbsp;
+                    <span class="glyphicon glyphicon-plus" ng-click="item.setQuantity(1, true)"></span></td>
+                <td>{{ item.getPrice() | currency}}</td>
+                <td>{{ item.getTotal() | currency }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <style>
+        .ngCart.cart span[ng-click] {
+            cursor: pointer;
+        }
+
+        .ngCart.cart .glyphicon.disabled {
+            color: #aaa;
+        }
+    </style>
+</script>
+
+
+<script type="text/ng-template" id="template/ngCart/addtocart.html">
+    <div ng-hide="attrs.id">
+        <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
+
+    </div>
+    <div ng-show="attrs.id">
+        <div ng-hide="inCart()">
+            <a class="btn btn-lg btn-primary"
+               ng-click="ngCart.addItem(id, name, price, quantity, data)"
+               ng-transclude></a>
+        </div>
+        <div class="alert alert-info" ng-show="inCart()">
+            This item is in your cart
+        </div>
+
+    </div>
+</script>
+</body>
+</html>

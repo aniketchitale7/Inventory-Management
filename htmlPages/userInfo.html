@@ -1,0 +1,75 @@
+<link rel="stylesheet" type="text/css" href="./css/style1.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="./css/navi.css" media="screen" />
+<div id="header">
+    <div id="top">
+        <div class="middle">
+            <p>Welcome, <strong>{{user_name}}.</strong> [ <a href  ng-click="logout()">logout</a> ]</p>
+        </div>
+        <div class="right">
+            <div class="align-right">
+
+            </div>
+        </div>
+    </div>
+    <div id="nav" style="margin-top: 10px;">
+        <ul>
+            <li class="upp"><a href="#">DashBoard</a>
+                <ul>
+
+                    <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
+
+                </ul   >
+            </li>
+            <li class="upp"><a href="#">Manage Users</a>
+                <ul>
+                    <li>&#8250; <a ng-click="showUsers()">Show Users</a></li>
+                    <li>&#8250; <a ng-click="redirectTomakeAdmin()">Make Manager Admin</a></li>
+                    <li>&#8250; <a ng-click="redirectToAuthorizeManager()">Validate Manager</a></li>
+
+                </ul>
+            </li>
+
+            <li class="upp"><a href="#">Settings</a>
+                <ul>
+                    <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<div ng-controller="userPageCtrl1">
+    <h1 align="center" id="heading">Update Account</h1>
+    <div class="main-div col-sm-8 col-sm-offset-2">
+        <form name="accountCreationForm" ng-submit="updateAccount()" class="form-horizontal" role="form">
+
+
+            <div class="form-group">
+                <label for="FirstName" ng-model="fname" class="col-sm-2 control-label">First Name </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="FirstName" value="{{userDetails[0].name.split(' ')[0]}}"  required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Last_Name" ng-model="lname" class="col-sm-2 control-label">Last Name </label>
+                <div class="col-sm-6">
+                    <input type="text"  class="form-control" id="Last_Name" value="{{userDetails[0].name.split(' ')[1]}}"  required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dob" ng-model="dob" class="col-sm-2 control-label">DOB </label>
+                <div class="col-sm-6">
+                    <input type="date" class="form-control" id="dob" value="{{userDetails[0].dateofbirth}}"  required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" id="update_account">Update Account</button>
+                </div>
+            </div>
+            <div>{{updated}}</div>
+        </form>
+    </div>
+</div>

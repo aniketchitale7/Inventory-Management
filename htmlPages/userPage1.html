@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl"  ng-app="app">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Inventory Management Portal</title>
+    <link rel="stylesheet" type="text/css" href="./css/style1.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="./css/navi.css" media="screen" />
+    <script type="text/javascript" src="./js/jquery-1.7.3.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".box .h_title").not(this).next("ul").hide("normal");
+            $(".box .h_title").not(this).next("#home").show("normal");
+            $(".box").children(".h_title").click( function() { $(this).next("ul").slideToggle(); });
+        });
+    </script>
+</head>
+
+<SCRIPT type="text/javascript">
+    window.history.forward();
+    function noBack() { window.history.forward(); }
+</SCRIPT>
+<body onload="noBack();"
+      onpageshow="if (event.persisted) noBack();" onunload="">
+<div class="wrap">
+    <div id="header">
+        <div id="top">
+            <div class="left">
+                <p>Welcome, <strong>{{user_name}}.</strong> [ <a href  ng-click="logout()">logout</a> ]</p>
+            </div>
+            <div class="right">
+                <div class="align-right">
+
+                </div>
+            </div>
+        </div>
+        <div id="nav" style="margin-top: 10px;">
+            <ul>
+                <li class="upp"><a href="#">DashBoard</a>
+                    <ul>
+                        <li>&#8250; <a href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
+
+                    </ul>
+                </li>
+                <li class="upp"><a href="#">Manage Supplies</a>
+                    <ul>
+                        <li>&#8250; <a ng-click="redirectToCart()">Order Supplies</a></li>
+                        <li>&#8250; <a ng-click="redirectToReturn()">Return Supplies</a></li>
+
+
+                    </ul>
+                </li>
+                <li class="upp"><a href="#">Settings</a>
+                    <ul>
+                        <li>&#8250; <a ng-click="updateInfo()">Update Information</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="sidebar">
+            <div class="box">
+                <div class="h_title">&#8250; DashBoard</div>
+                <ul id="home">
+                    <li class="b1"><a class="icon view_page" ng-click= "updateInfo()">Profile</a></li>
+                    <li class="b2"><a class="icon report" href="mailto:someone@example.com?Subject=Reply%20BY%20Admin">Reply by mail</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+        <div id="main">
+            <div class="clear"></div>
+            <div class="full_w">
+                <div class="h_title"></div>
+                <h2>Welcome {{name}} .</h2>
+                <p><h4> Welcome to our website. Please email acbegr.solutions@gmail.com if you have any concerns</h4></p>
+                <div class="container">
+
+                </div>
+        </div>
+    </div>
+        <div class="clear"></div>
+    </div>
+
+    <div id="footer" style="position:absolute; bottom:0;">
+        <div class="left">
+            <p>Design : Team Fundamentals</a></p>
+        </div>
+        <div class="right">
+            <p><a href="">Copy Right Reserved</a> | <a href="">Team Fundamentals</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
